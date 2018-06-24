@@ -1,28 +1,36 @@
 @extends('layouts.default')
 
 @section('content')
+    <h1>Contact Form</h1>
 
-    <div class="card mt-3 pl-2 pr-2">
-        <div class="card-title"><h1>Contact</h1>
-            <p class="lead">Please use this form to contact the site owner.</p></div>
+    <form role="form" id="contact-form" class="contact-form" method="POST" action="{{route('contact.store')}}">
 
-        <div class="card-body">
+        {{ csrf_field() }}
 
-
-            <form action="/contact" method="post">
-                {{ csrf_field() }}
+        <div class="row">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input name="email" type="email" class="form-control" id="email" placeholder="name@example.com">
+                    <input type="text" class="form-control" name="name" autocomplete="off" id="Name" placeholder="Name">
                 </div>
-
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label for="body">Message</label>
-                    <textarea name="body" class="form-control" id="body" rows="3"></textarea>
+                    <input type="email" class="form-control" name="email" autocomplete="off" id="email" placeholder="E-mail">
                 </div>
-                <button type="submit" class="btn btn-primary mb-2">Submit</button>
-            </form>
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <textarea class="form-control textarea" rows="3" name="message" id="Message" placeholder="Message"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="submit" class="btn main-btn pull-right">Send a message</button>
+            </div>
+        </div>
+    </form>
 
 @endsection
